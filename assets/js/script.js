@@ -37,12 +37,12 @@ var showMovies = (data) => {
 };
 
 // Call fetchPopularMovies to fetch and display the top 10 movies
-fetchPopularMovies('https://imdb-api.com/en/API/MostPopularMovies/k_12345678');
+fetchPopularMovies('https://imdb-api.com/en/API/MostPopularMovies/k_u2gn9d58');
 
 
 
 function displayMovieTrailer(movieId) {
-  const apiKey = 'k_12345678'; // Replace with your IMDb API key
+  const apiKey = 'k_u2gn9d58'; // Replace with your IMDb API key
   const url = `https://imdb-api.com/en/API/Trailer/${apiKey}/${movieId}`;
 
   // Create and append the <h1> element
@@ -81,7 +81,7 @@ function displayMovieTrailer(movieId) {
 }
 
 // Example usage
-displayMovieTrailer('k_12345678');
+displayMovieTrailer('k_u2gn9d58');
 
 
 
