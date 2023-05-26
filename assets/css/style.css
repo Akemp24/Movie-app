@@ -32,11 +32,12 @@ header {
     margin: 2%;
 }
 
-.card {
-
+footer {
+    display: flex;
+    justify-content: center;
+    flex: wrap;
 }
 
 button:hover {
     cursor: grab;
-    
 }
