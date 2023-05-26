@@ -26,3 +26,8 @@ header {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.card {
+    justify-content: space-evenly;
+    margin: 2%;
+}
