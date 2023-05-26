@@ -82,9 +82,3 @@ function displayMovieTrailer(movieId) {
 
 // Example usage
 displayMovieTrailer('k_u2gn9d58');
-
-
-
- 
-
-
