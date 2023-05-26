@@ -40,49 +40,38 @@ var showMovies = (data) => {
 fetchPopularMovies('https://imdb-api.com/en/API/MostPopularMovies/k_u2gn9d58');
 
 
-
-function displayMovieTrailer(movieId) {
-  const apiKey = 'k_u2gn9d58'; // Replace with your IMDb API key
-  const url = `https://imdb-api.com/en/API/Trailer/${apiKey}/${movieId}`;
-
-  // Create and append the <h1> element
-  const h1 = document.createElement('h1');
-  h1.textContent = 'Movie Trailer';
-  document.body.appendChild(h1);
-
-  fetch(url)
+function fetchTrailer(movieId) {
+  const apiKey = 'k_u2gn9d58';
+  const apiUrl = `https://imdb-api.com/en/API/Trailer/${apiKey}/${movieId}`;
+  
+  fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
-      if (data.errorMessage) {
-        const trailerContainer = document.createElement('div');
-        trailerContainer.textContent = data.errorMessage;
-        document.body.appendChild(trailerContainer);
-        return;
-      }
-
       const trailerUrl = data.videoUrl;
-      const iframe = document.createElement('iframe');
-      iframe.src = trailerUrl;
-      iframe.width = '100%';
-      iframe.height = '400px';
-
-      const trailerContainer = document.createElement('div');
-      trailerContainer.id = 'trailer-container';
-      trailerContainer.appendChild(iframe);
-
-      document.body.appendChild(trailerContainer);
+      displayTrailer(trailerUrl);
     })
     .catch(error => {
-      const trailerContainer = document.createElement('div');
-      trailerContainer.textContent = 'Error occurred while fetching the trailer.';
-      document.body.appendChild(trailerContainer);
-      console.error(error);
+      console.log('Error:', error);
     });
 }
 
-// Example usage
-displayMovieTrailer('k_u2gn9d58');
+function displayTrailer(trailerUrl) {
+  const trailerContainer = document.createElement('div');
+  trailerContainer.id = 'trailer-container';
+  document.body.appendChild(trailerContainer);
+  
+  const videoElement = document.createElement('video');
+  videoElement.src = trailerUrl;
+  videoElement.controls = true;
+  videoElement.width = 640;
+  videoElement.height = 360;
 
+  trailerContainer.appendChild(videoElement);
+}
+
+// Example usage
+const movieId = 'tt1375666'; // Replace with your desired IMDb movie ID
+fetchTrailer(movieId);
 
 
  
