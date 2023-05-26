@@ -31,3 +31,12 @@ header {
     justify-content: space-evenly;
     margin: 2%;
 }
+
+.card {
+
+}
+
+button:hover {
+    cursor: grab;
+    
+}
