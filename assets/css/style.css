@@ -5,6 +5,7 @@ html {
 header {
     padding: 3%;
     background-color: gray;
+    font-family: 'Eczar','Courier New', 'Courier', 'monospace';
 }
 
 .box {
@@ -17,6 +18,7 @@ header {
     text-align: center;
 }
 
+/* style the movie container for a row and space for ease of viewing */
 #movie-container {
     display: flex;
     flex-direction: row;
@@ -30,14 +32,25 @@ header {
 .card {
     justify-content: space-evenly;
     margin: 2%;
-}
+    font-family: 'Limelight', 'Courier New', 'Courier', 'monospace';
 
+}
+/* add footer display center */
+/* make at bottom of page */
 footer {
     display: flex;
     justify-content: center;
     flex: wrap;
+    color: rgb(26, 25, 25);
 }
 
+/* have buttons better visually with hover and active */
 button:hover {
-    cursor: grab;
+    cursor: grabbing;
+}
+
+button:active {
+    font-size: 12px;
+    box-shadow: 0 0 10px rgb(63, 63, 63);
+    color: rgb(17, 17, 17);
 }
