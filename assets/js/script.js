@@ -33,13 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
       content.classList.add('content');
 
       // Set the movie title and rating in the content div
+      
       content.innerHTML = `
         <div class="title">
-          <h2>${item.fullTitle}</h2>
+          <h6>${item.fullTitle}</h6>
           <span>${item.imDbRating}</span>
         </div>
-        <img src="${item.image}" class="movie-image" alt="Movie Poster">
+        
+        <img src="${item.image}" class="movie-image" alt="Movie Poster" style="width: 200px; height: auto;">
       `;
+      // added style properties so that we can customize the pictures above 
 
       // Append the content to the card
       card.querySelector('.card-content').appendChild(content);
