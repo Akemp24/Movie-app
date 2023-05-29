@@ -40,12 +40,11 @@ const movieContainer = document.getElementById('movie-container');
         </div>
         <img src="${item.image}" class="movie-image" alt="Movie Poster">
       `;
-      //Added trailer button here, so that it's in the same 'content' div as the movie title, etc
+      //Add "View Trailer" button and add a listener
       var viewTrailerButton = document.createElement('button');
       viewTrailerButton.setAttribute('id', "view-trailer");
       viewTrailerButton.textContent = 'View Trailer';
       viewTrailerButton.addEventListener('click', function(e) {
-          //var selectedTitle = viewTrailerButton.parentNode.children[0].children[0].innerHTML;
           var selectedTitle = e.target.parentNode.children[0].children[0].innerHTML;
           locateMovieTrailer(selectedTitle);  
         });
@@ -64,12 +63,13 @@ function locateMovieTrailer(chosenTitle) {
   var storedMovies = JSON.parse(window.localStorage.getItem("movies"))
   //locate movie id associated with the selected movie trailer button 
   for (i=0; i<10; i++) {
-    if (chosenTitle === storedMovies[i].fullTitle)
+    if (chosenTitle === storedMovies[i].fullTitle) {
       var chosenMovieId = storedMovies[i].id;
+      //Play the selected trailer
+      playMovieTrailer(chosenMovieId);
+      return; 
+    }  
   }
-  console.log('calling playMovieTrailer for movie id: ' + chosenMovieId);
-  //Play the selected trailer
-  playMovieTrailer(chosenMovieId);
 }
 
 function playMovieTrailer(movieId) {
@@ -85,10 +85,7 @@ function playMovieTrailer(movieId) {
         document.body.appendChild(trailerContainer);
         return;
       }
-      console.log(data);
-      //Due to a IMDB Content Security error using <iframe> and also an error using <a>, 
       //Trailer plays in a new window: 
-      console.log(data.link);
       window.open(data.link, '_blank');
     })
     .catch(error => {
