@@ -51,4 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Call fetchPopularMovies to fetch and display the top 10 movies
   fetchPopularMovies('https://imdb-api.com/en/API/MostPopularMovies/k_u2gn9d58');
+
+
+  function showTitle () {
+    
+  }
 });
