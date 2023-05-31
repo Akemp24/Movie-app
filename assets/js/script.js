@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <span>${item.imDbRating}</span>
         </div>
         
-        <img src="${item.image}" class="movie-image" alt="Movie Poster" style="width: 200px; height: auto;">
+        <img src="${item.image}" class="movie-image" alt="Movie Poster" style="width: 300px; height: auto;">
       `;
       // added style properties so that we can customize the pictures above 
       //Add "View Trailer" button and add a listener
