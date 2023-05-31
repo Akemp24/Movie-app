@@ -35,12 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // Set the movie title and rating in the content div
       
       content.innerHTML = `
-        <div class="title">
+         <img src="${item.image}" class="movie-image" alt="Movie Poster" style="width: 300px; height: auto;">
+         <div class="title">
           <h6>${item.fullTitle}</h6>
           <span>${item.imDbRating}</span>
         </div>
-        
-        <img src="${item.image}" class="movie-image" alt="Movie Poster" style="width: 300px; height: auto;">
       `;
       // added style properties so that we can customize the pictures above 
       //Add "View Trailer" button and add a listener
@@ -79,9 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
       content.innerHTML = `
    
       <div class="has-text-white"> 
+       
+        <img src="${movie.image}" class="movie-image" alt="Movie Poster">
         <div><strong>Title:</strong> ${movie.title}</div>
         </div>
-        <img src="${movie.image}" class="movie-image" alt="Movie Poster">
       `;
 
       const viewTrailerBtn = document.createElement("button");
