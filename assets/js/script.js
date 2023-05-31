@@ -40,6 +40,15 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
         <img src="${item.image}" class="movie-image" alt="Movie Poster">
       `;
+      //Add "View Trailer" button and add a listener
+      var viewTrailerButton = document.createElement('button');
+      viewTrailerButton.setAttribute('id', "view-trailer");
+      viewTrailerButton.textContent = 'View Trailer';
+      viewTrailerButton.addEventListener('click', function(e) {
+          var selectedTitle = e.target.parentNode.children[0].children[0].innerHTML;
+          locateMovieTrailer(selectedTitle);  
+        });
+      content.appendChild(viewTrailerButton);
 
       // Append the content to the card
       card.querySelector(".card-content").appendChild(content);
