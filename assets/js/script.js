@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (searchTerm !== "") {
       try {
         const response = await fetch(
-          `https://imdb-api.com/en/API/SearchMovie/k_u2gn9d58/${searchTerm}`
+          `https://imdb-api.com/en/API/SearchMovie/k_67zpx0r8/${searchTerm}`
         );
         const data = await response.json();
 
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Call fetchPopularMovies to fetch and display the top 10 movies
   fetchPopularMovies(
-    "https://imdb-api.com/en/API/MostPopularMovies/k_u2gn9d58"
+    "https://imdb-api.com/en/API/MostPopularMovies/k_67zpx0r8"
   );
 
   // Handle search form submission
