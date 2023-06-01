@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       viewTrailerButton.setAttribute('id', "view-trailer");
       viewTrailerButton.textContent = 'View Trailer';
       viewTrailerButton.addEventListener('click', function(e) {
-          var selectedTitle = e.target.parentNode.children[1].children[0].innerHTML;
+          var selectedTitle = e.target.parentNode.children[1].children[0].textContent;
           locateMovieTrailer(selectedTitle);  
         });
       content.appendChild(viewTrailerButton);
@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //get saved top 10 movies from local storage 
     var storedMovies = JSON.parse(window.localStorage.getItem("movies"))
     //locate movie id associated with the selected movie trailer button 
-    for (i=0; i<10; i++) {
-      if (chosenTitle === storedMovies[i].title) {
+    for (i = 0; i < storedMovies.length; i++) {
+      if (chosenTitle.toLowerCase() === storedMovies[i].title.toLowerCase()) {
         var chosenMovieId = storedMovies[i].id;
         //Play the selected trailer
         playMovieTrailer(chosenMovieId);
