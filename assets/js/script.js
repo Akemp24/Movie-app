@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       content.innerHTML = `
          <img src="${item.image}" class="movie-image" alt="Movie Poster" style="width: 300px; height: auto;">
          <div class="title">
-          <h6>${item.fullTitle}</h6>
+          <h6>${item.title}</h6>
           <span>${item.imDbRating}</span>
         </div>
       `;
