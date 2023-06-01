@@ -1,11 +1,13 @@
 html {
     background-color: black;
 }
-
+/* add font-family */
 header {
     padding: 3%;
-    background: rgb(110,112,121);
-    background: radial-gradient(circle, rgba(110,112,121,1) 0%, rgba(0,0,0,1) 100%);
+    background-color: rgb(128, 128, 128);
+    font-family: 'Eczar','Courier New', 'Courier', 'monospace';
+    background: rgb(15,22,44);
+    background: radial-gradient(circle, rgba(15,22,44,1) 52%, rgba(69,80,128,1) 82%, rgba(3,5,19,1) 100%);
 }
 
 .box {
@@ -18,11 +20,12 @@ header {
     text-align: center;
 }
 
+/* style the movie container for a row and space for ease of viewing */
 #movie-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: rgb(56, 56, 56);
+    background-color: rgb(36, 36, 37);
     opacity: .8;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -31,6 +34,27 @@ header {
 .card {
     justify-content: space-evenly;
     margin: 2%;
+    font-family: 'Limelight', 'Courier New', 'Courier', 'monospace';
     width: 300px;
     height: 650px;
+}
+
+/* add footer display center */
+/* make at bottom of page */
+footer {
+    display: flex;
+    text-align: center;
+    color: rgb(187, 193, 195);
+    font-family: 'Eczar', 'Courier New', 'Courier', 'monospace';
+}
+
+/* have buttons better visually with hover and active */
+button:hover {
+    cursor: grabbing;
+}
+
+button:active {
+    font-size: 12px;
+    box-shadow: 0 0 10px rgb(61, 61, 63);
+    color: rgb(17, 17, 17);
 }

@@ -1,97 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie App</title>
-    <!-- Linked Bulma CDN and CSS Stylesheet -->
-   
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie App</title>
+  <!-- Linked Bulma CDN and CSS Stylesheet -->
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Eczar&family=Limelight&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-    <header>
-        <h1 class="header has-text-grey-lighter is-size-4 is-size-4-mobile is-size-4-touch is-size-2-desktop">JAKD Movie App</h1>
-        <form id="search-form">
-            <input type="text" name="movie" size="15" id="search-movie" class="is-pulled-right" placeholder="Search Here ..." />
-        </form>
-    </header>
+  <!-- add mobile change ability through bulma -->
+  <header>
+    <h1 class="header has-text-grey-lighter is-size-4 is-size-4-mobile is-size-4-touch is-size-2-desktop">JAKD Movie App
+    </h1>
+    <form id="search-form">
+      <input type="text" name="movie" size="15" id="search-movie" class="is-pulled-right"
+        placeholder="Search Here ..." />
+    </form>
+  </header>
 
-    
-    
-
-    <div id="movie-container" class="row card-space is-size-6-mobile is-size-6-touch is-size-6-desktop">
-        <!-- title, rating, and button to view trailer above each movie -->
-        <!-- Placeholder for top 10 movies -->
-        <div id="card-box"class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-         <div class="row card-space" style="width: 300px" >
-            <div class="card">
-                <div class="card-content">
-                </div>
-              </div>
-         </div>
-
-        <!-- Added link to the Javascript sheet -->
+  <div id="movie-container" class="row card-space is-size-6-mobile is-size-6-touch is-size-6-desktop">
+    <!-- title, rating, and button to view trailer above each movie -->
+    <!-- Placeholder for top 10 movies -->
+    <div id="card-box" class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <div class="row card-space" style="width: 300px">
+      <div class="card">
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+    <!-- add footer, developer names and year made -->
+    <footer id='footer-box' class="column is-size-6-mobile is-size-6-touch is-size-6-desktop">
+      <h2>
+        Created & Developed by Jaldhara, Asia, Katie, Donna
+      </h2>
+      <p>©2023</p>
+    </footer>
+    <!-- Added link to the Javascript sheet -->
     <script src="assets/js/script.js"></script>
-
-   <footer>
-    
-   </footer>
 
 </body>
 
