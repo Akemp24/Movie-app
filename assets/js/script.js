@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
          <img src="${item.image}" class="movie-image" alt="Movie Poster" style="width: 300px; height: auto;">
          <div class="title">
           <h6>${item.title}</h6>
-          <span>${item.imDbRating}</span>
+          <span style= "font-size:16px;">Rating: ${item.imDbRating}</span>
         </div>
       `;
       // added style properties so that we can customize the pictures above 
