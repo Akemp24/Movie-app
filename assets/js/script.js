@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       content.classList.add("content");
 
       // Set the movie title and rating in the content div
-      
+
       content.innerHTML = `
          <img src="${item.image}" class="movie-image" alt="Movie Poster" style="width: 300px; height: auto;">
          <div class="title">
@@ -41,15 +41,16 @@ document.addEventListener("DOMContentLoaded", function () {
           <span style= "font-size:16px;">Rating: ${item.imDbRating}</span>
         </div>
       `;
-      // added style properties so that we can customize the pictures above 
+      // added style properties so that we can customize the pictures above
       //Add "View Trailer" button and add a listener
-      var viewTrailerButton = document.createElement('button');
-      viewTrailerButton.setAttribute('id', "view-trailer");
-      viewTrailerButton.textContent = 'View Trailer';
-      viewTrailerButton.addEventListener('click', function(e) {
-          var selectedTitle = e.target.parentNode.children[1].children[0].textContent;
-          locateMovieTrailer(selectedTitle);  
-        });
+      var viewTrailerButton = document.createElement("button");
+      viewTrailerButton.setAttribute("id", "view-trailer");
+      viewTrailerButton.textContent = "View Trailer";
+      viewTrailerButton.addEventListener("click", function (e) {
+        var selectedTitle =
+          e.target.parentNode.children[1].children[0].textContent;
+        locateMovieTrailer(selectedTitle);
+      });
       content.appendChild(viewTrailerButton);
 
       // Append the content to the card
@@ -58,38 +59,39 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function locateMovieTrailer(chosenTitle) {
-    //get saved top 10 movies from local storage 
-    var storedMovies = JSON.parse(window.localStorage.getItem("movies"))
-    //locate movie id associated with the selected movie trailer button 
+    //get saved top 10 movies from local storage
+    var storedMovies = JSON.parse(window.localStorage.getItem("movies"));
+    //locate movie id associated with the selected movie trailer button
     for (i = 0; i < storedMovies.length; i++) {
       if (chosenTitle.toLowerCase() === storedMovies[i].title.toLowerCase()) {
         var chosenMovieId = storedMovies[i].id;
         //Play the selected trailer
         playMovieTrailer(chosenMovieId);
-        return; 
-      }  
+        return;
+      }
     }
   }
-  
+
   function playMovieTrailer(movieId) {
-    var apiKey = 'k_67zpx0r8';
+    var apiKey = "k_67zpx0r8";
     var url = `https://imdb-api.com/en/API/Trailer/${apiKey}/${movieId}`;
-  
+
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.errorMessage) {
-          const trailerContainer = document.createElement('div');
+          const trailerContainer = document.createElement("div");
           trailerContainer.textContent = data.errorMessage;
           document.body.appendChild(trailerContainer);
           return;
         }
-        //Trailer plays in a new window: 
-        window.open(data.link, '_blank');
+        //Trailer plays in a new window:
+        window.open(data.link, "_blank");
       })
-      .catch(error => {
-        const trailerContainer = document.createElement('div');
-        trailerContainer.textContent = 'Error occurred while fetching the trailer.';
+      .catch((error) => {
+        const trailerContainer = document.createElement("div");
+        trailerContainer.textContent =
+          "Error occurred while fetching the trailer.";
         document.body.appendChild(trailerContainer);
         console.error(error);
       });
