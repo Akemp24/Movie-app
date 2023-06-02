@@ -177,3 +177,83 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+function fetchUpcomingMovies() {
+  const apiKey = "7b682c20bca29c7165fa16b4b81ab168";
+  const searchInput = document.getElementById("search-movie");
+  const searchQuery = searchInput.value.trim();
+  // Get the value from the search input and remove leading/trailing whitespace
+  let apiUrl;
+
+  if (searchQuery !== "") {
+    apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
+      searchQuery
+    )}`;
+  } else {
+    apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
+  }
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      const movies = data.results;
+      const movieContainer = document.getElementById("movie-container");
+      movieContainer.innerHTML = "";
+      // Clear the existing movie content
+
+      if (movies.length === 0) {
+        const noResultsMessage = document.createElement("p");
+        noResultsMessage.textContent = "No results found.";
+        movieContainer.appendChild(noResultsMessage);
+      } else {
+        movies.forEach((movie) => {
+          const title = movie.title;
+          const posterPath = movie.poster_path;
+          const listItem = document.createElement("div");
+          listItem.classList.add(
+            "row",
+            "card-space",
+            "is-size-6-mobile",
+            "is-size-6-touch",
+            "is-size-6-desktop"
+          );
+          listItem.style.width = "300px";
+
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          const cardContent = document.createElement("div");
+          cardContent.classList.add("card-content");
+
+          const posterElement = document.createElement("img");
+          posterElement.src = `https://image.tmdb.org/t/p/w300${posterPath}`;
+          posterElement.alt = title;
+          posterElement.classList.add("my-4");
+          cardContent.appendChild(posterElement);
+
+          const titleElement = document.createElement("h2");
+          titleElement.textContent = title;
+          cardContent.appendChild(titleElement);
+
+          card.appendChild(cardContent);
+          listItem.appendChild(card);
+          movieContainer.appendChild(listItem);
+        });
+      }
+    })
+    .catch((error) => {
+      console.log("Error fetching upcoming movies:", error);
+    });
+}
+
+// Add event listener to the "Upcoming Movies" button
+const upcomingMoviesButton = document.querySelector(".upcoming-movie");
+upcomingMoviesButton.addEventListener("click", fetchUpcomingMovies);
+
+// Add event listener to the search form
+const searchForm = document.getElementById("search-form");
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  // Prevent the form from submitting and refreshing the page
+  fetchUpcomingMovies();
+});
