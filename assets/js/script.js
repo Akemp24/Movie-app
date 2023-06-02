@@ -232,6 +232,7 @@ function fetchUpcomingMovies() {
           posterElement.alt = title;
           posterElement.classList.add("my-4");
           cardContent.appendChild(posterElement);
+          posterElement.style.paddingTop = `100px`;
 
           const titleElement = document.createElement("h2");
           titleElement.textContent = title;
