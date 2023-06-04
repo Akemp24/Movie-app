@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const movieContainer = document.getElementById("movie-container");
   const searchForm = document.getElementById("search-form");
+  var apiKeyIMDB = "k_67zpx0r8";
 
   const fetchPopularMovies = async (api) => {
     try {
@@ -73,8 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function playMovieTrailer(movieId) {
-    var apiKey = "k_67zpx0r8";
-    var url = `https://imdb-api.com/en/API/Trailer/${apiKey}/${movieId}`;
+    var url = `https://imdb-api.com/en/API/Trailer/${apiKeyIMDB}/${movieId}`;
 
     fetch(url)
       .then((response) => response.json())
@@ -118,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
       content.innerHTML = `
    
       <div class="has-text-white"> 
-       
         <img src="${movie.image}" class="movie-image" alt="Movie Poster">
         <div><strong>Title:</strong> ${movie.title}</div>
         </div>
@@ -127,8 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const viewTrailerBtn = document.createElement("button");
       viewTrailerBtn.innerText = "View Trailer";
       viewTrailerBtn.addEventListener("click", function () {
-        // Open IMDb page of the movie in a new tab/window
-        window.open(`https://www.imdb.com/title/${movie.id}/videogallery`);
+        // Open IMDb page of the movie trailer in a new tab/window
+        playMovieTrailer(movie.id);
       });
 
       content.appendChild(viewTrailerBtn);
@@ -139,17 +138,15 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const searchMovies = async (searchTerm) => {
-    // Clear previous search results
-    movieContainer.innerHTML = "";
-
     if (searchTerm !== "") {
       try {
         const response = await fetch(
-          `https://imdb-api.com/en/API/SearchMovie/k_67zpx0r8/${searchTerm}`
+          `https://imdb-api.com/en/API/SearchMovie/${apiKeyIMDB}/${searchTerm}`
         );
         const data = await response.json();
 
         if (data.results.length > 0) {
+          //display results of the search-by-title
           displayMovies(data.results);
         } else {
           movieContainer.innerHTML = "No movies found.";
@@ -162,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Call fetchPopularMovies to fetch and display the top 10 movies
   fetchPopularMovies(
-    "https://imdb-api.com/en/API/MostPopularMovies/k_67zpx0r8"
+    "https://imdb-api.com/en/API/MostPopularMovies/" + apiKeyIMDB
   );
 
   // Handle search form submission
@@ -173,35 +170,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchTerm = document.getElementById("search-movie").value.trim();
 
     if (searchTerm !== "") {
-      searchMovies(searchTerm);
+      movieContainer.innerHTML = "";
+      //display loading gif for 2 seconds
+      showLoadingImg();
+      setTimeout(() => {
+          searchMovies(searchTerm);
+        }, 2000);  // 2 seconds
     } else {
       movieContainer.innerHTML = "Please enter a search term.";
     }
   });
-});
+
+  function showLoadingImg() {
+    //display loading gif on page
+    var loadingImgURL = "./assets/images/Loading_rainbow_globe.gif";
+    movieContainer.innerHTML = `<img src="${loadingImgURL}" id="loading-image" alt="Loading image" width="800px" height="800px">`;
+  }
 
 function fetchUpcomingMovies() {
   const apiKey = "7b682c20bca29c7165fa16b4b81ab168";
-  const searchInput = document.getElementById("search-movie");
-  const searchQuery = searchInput.value.trim();
-  // Get the value from the search input and remove leading/trailing whitespace
-  let apiUrl;
-
-  if (searchQuery !== "") {
-    apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
-      searchQuery
-    )}`;
-  } else {
-    apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
-  }
+  const apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
       const movies = data.results;
       const movieContainer = document.getElementById("movie-container");
-      movieContainer.innerHTML = "";
       // Clear the existing movie content
+      movieContainer.innerHTML = "";
 
       if (movies.length === 0) {
         const noResultsMessage = document.createElement("p");
@@ -253,10 +249,4 @@ function fetchUpcomingMovies() {
 const upcomingMoviesButton = document.querySelector(".upcoming-movie");
 upcomingMoviesButton.addEventListener("click", fetchUpcomingMovies);
 
-// Add event listener to the search form
-const searchForm = document.getElementById("search-form");
-searchForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  // Prevent the form from submitting and refreshing the page
-  fetchUpcomingMovies();
 });
