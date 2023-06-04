@@ -58,3 +58,7 @@ button:active {
     box-shadow: 0 0 10px rgb(61, 61, 63);
     color: rgb(17, 17, 17);
 }
+
+.upcoming-movie {
+    margin-right: 75px;
+}
