@@ -63,3 +63,8 @@ button:active {
     margin-right: 5px;
     margin-left: 110px;
 }
+
+.round {
+    border-radius: 15px;
+    padding: 6px;
+}
