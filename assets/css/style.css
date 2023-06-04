@@ -60,12 +60,11 @@ button:active {
 }
 
 .upcoming-movie {
-    margin-right: 75px;
+    margin-right: 5px;
+    margin-left: 110px;
 }
 
 .round {
     border-radius: 15px;
     padding: 6px;
-    margin-right: 5px;
-    margin-left: 110px;
 }
