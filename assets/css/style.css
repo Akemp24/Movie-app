@@ -62,3 +62,8 @@ button:active {
 .upcoming-movie {
     margin-right: 75px;
 }
+
+.round {
+    border-radius: 15px;
+    padding: 6px;
+}
