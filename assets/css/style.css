@@ -60,5 +60,6 @@ button:active {
 }
 
 .upcoming-movie {
-    margin-right: 75px;
+    margin-right: 5px;
+    margin-left: 110px;
 }
