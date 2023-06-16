@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const movieContainer = document.getElementById("movie-container");
   const searchForm = document.getElementById("search-form");
   var apiKeyIMDB = "k_67zpx0r8";
+  var containerLabel = document.getElementById("container-label");
 
   const fetchPopularMovies = async (api) => {
     try {
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const showMovies = (data) => {
+    containerLabel.textContent = 'TOP 10 TRENDING MOVIES';
     var movieCards = document.getElementsByClassName("card");
 
     for (let i = 0; i < data.length; i++) {
@@ -125,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const viewTrailerBtn = document.createElement("button");
       viewTrailerBtn.innerText = "View Trailer";
+      viewTrailerBtn.setAttribute("id", "red-view-trailer");
       viewTrailerBtn.addEventListener("click", function () {
         // Open IMDb page of the movie trailer in a new tab/window
         playMovieTrailer(movie.id);
@@ -135,6 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
       movieCard.appendChild(cardContent);
       movieContainer.appendChild(movieCard);
     });
+    containerLabel.textContent = 'SEARCH RESULTS';
+    var searchBox = document.getElementById("search-movie");
+    searchBox.value="";
+    searchBox.placeholder="Enter Title to start a new search here ...";
   };
 
   const searchMovies = async (searchTerm) => {
@@ -171,6 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (searchTerm !== "") {
       movieContainer.innerHTML = "";
+      containerLabel.textContent = 'LOADING...'
       //display loading gif for 2 seconds
       showLoadingImg();
       setTimeout(() => {
@@ -200,10 +208,10 @@ function fetchUpcomingMovies() {
       movieContainer.innerHTML = "";
 
       if (movies.length === 0) {
-        const noResultsMessage = document.createElement("p");
-        noResultsMessage.textContent = "No results found.";
+        containerLabel.textContent = 'No results found.'
         movieContainer.appendChild(noResultsMessage);
       } else {
+        containerLabel.textContent = 'UPCOMING MOVIES';
         movies.forEach((movie) => {
           const title = movie.title;
           const posterPath = movie.poster_path;
