@@ -44,4 +44,4 @@ This project uses 2 different server-side API's to fetch movie data. To use your
 const fetchPopularMoviesURL = `https://imdb-api.com/en/API/MostPopularMovies/${apiKey}`;<br>
 const searchMoviesURL = `https://imdb-api.com/en/API/SearchMovie/${apiKey}`;<br>
 const movieTrailerURL = `https://imdb-api.com/en/API/Trailer/${apiKey}/${movieId}`;<br>
-const upcomingMoviesURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
+const upcomingMoviesURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;<br>

@@ -257,4 +257,17 @@ function fetchUpcomingMovies() {
 const upcomingMoviesButton = document.querySelector(".upcoming-movie");
 upcomingMoviesButton.addEventListener("click", fetchUpcomingMovies);
 
+// Add a 'last searched' button leveraging client-side-storage
+// Put last searched items in a drop down menu
+
+// Write a function to retrieve local storage
+
+// Write a function so that there will be a clear screen for the local storage
+
+// Append the local storage to the screen
+
+// Add a clear history button for the last searched items
+
 });
+
+
