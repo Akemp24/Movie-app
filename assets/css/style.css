@@ -95,3 +95,104 @@ button:active {
     margin-right: 5px;
     margin-top: 10px;
   }
+
+
+/* Styles for screens smaller than 768px (mobile) */
+@media (max-width: 767px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+      padding: 2%;
+    }
+  
+    .upcoming-movie {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+
+    #search-section {
+      display:flex;
+      flex-direction: column;
+    }
+
+    #search-movie {
+      width: 70%;
+      font-size: 14px;
+    }
+  
+    #movie-container {
+      padding: 2%;
+    }
+  
+    .card {
+      width: 100%;
+      height: auto;
+      margin: 10px 0;
+    }
+  
+    footer {
+      flex-direction: column;
+      align-items: center;
+      padding: 2%;
+    }
+  }
+
+/* Styles for screens larger than 768px */
+@media (min-width: 768px) {
+    header {
+      padding: 1%;
+    }
+  
+    #movie-container {
+      justify-content: flex-start;
+    }
+  
+    .card {
+      width: 200px;
+      height: 500px;
+    }
+  
+    .upcoming-movie {
+      margin-left: 10px;
+    }
+  }
+  
+  /* Styles for screens larger than 1024px */
+  @media (min-width: 1024px) {
+    header {
+      padding: 0.5%;
+    }
+  
+    #movie-container {
+      justify-content: space-around;
+    }
+  
+    .card {
+      width: 250px;
+      height: 600px;
+    }
+  
+    .upcoming-movie {
+      margin-left: 20px;
+    }
+  }
+  
+  /* Styles for screens larger than 1200px */
+  @media (min-width: 1200px) {
+    header {
+      padding: 0.25%;
+    }
+  
+    #movie-container {
+      justify-content: space-evenly;
+    }
+  
+    .card {
+      width: 300px;
+      height: 700px;
+    }
+  
+    .upcoming-movie {
+      margin-left: 30px;
+    }
+  }
