@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var loadingImgURL = "./assets/images/Loading_rainbow_globe.gif";
     movieContainer.innerHTML = `<img src="${loadingImgURL}" id="loading-image" alt="Loading image" width="800px" height="800px">`;
   }
-
+ 
 function fetchUpcomingMovies() {
   const apiKey = "7b682c20bca29c7165fa16b4b81ab168";
   const apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
@@ -257,17 +257,17 @@ function fetchUpcomingMovies() {
 const upcomingMoviesButton = document.querySelector(".upcoming-movie");
 upcomingMoviesButton.addEventListener("click", fetchUpcomingMovies);
 
-// Add a 'last searched' button leveraging client-side-storage
-// Put last searched items in a drop down menu
+// Add event listener to the "Last Searched" button
+const lastSearchedButton = document.getElementById("last-searched");
+lastSearchedButton.addEventListener("click", displayLastSearched);
 
-// Write a function to retrieve local storage
-
-// Write a function so that there will be a clear screen for the local storage
-
-// Append the local storage to the screen
-
-// Add a clear history button for the last searched items
-
+function displayLastSearched() {
+  const searchMovies = localStorage.getItem("searchMovies");
+  if (searchMovies) {
+    const movies = JSON.parse(searchMovies);
+    displayMovies(movies);
+  } else {
+    movieContainer.innerHTML = "No last searched movies found.";
+  }
+}
 });
-
-

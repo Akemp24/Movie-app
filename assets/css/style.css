@@ -95,6 +95,10 @@ button:active {
     padding-left:20px;
     color: white;
 }
+#last-searched {
+    margin-right: 5px;
+    margin-top: 10px;
+  }
 
 
 /* Styles for screens smaller than 768px (mobile) */
