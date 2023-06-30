@@ -99,12 +99,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  const displayMovies = (movies) => {
+  const displayMovies = (movies, searchTerm) => {
     // Clear previous search results
     movieContainer.innerHTML = "";
 
     // Save the search movies in local storage
     localStorage.setItem("searchMovies", JSON.stringify(movies));
+    localStorage.setItem("lastSearchTerm", searchTerm);
 
     movies.forEach(function (movie) {
       // Create a new <div> element for each movie
@@ -138,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
       movieCard.appendChild(cardContent);
       movieContainer.appendChild(movieCard);
     });
-    containerLabel.textContent = 'SEARCH RESULTS';
+    containerLabel.textContent = ('SEARCH RESULTS FOR "' + searchTerm + '"');
     var searchBox = document.getElementById("search-movie");
     searchBox.value="";
     searchBox.placeholder="Enter Title to start a new search here ...";
@@ -154,9 +155,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (data.results.length > 0) {
           //display results of the search-by-title
-          displayMovies(data.results);
+          displayMovies(data.results, searchTerm);
         } else {
-          movieContainer.innerHTML = "No movies found.";
+          containerLabel.textContent = "No movies found.";
         }
       } catch (error) {
         console.error("Error:", error);
@@ -185,7 +186,9 @@ document.addEventListener("DOMContentLoaded", function () {
           searchMovies(searchTerm);
         }, 2000);  // 2 seconds
     } else {
-      movieContainer.innerHTML = "Please enter a search term.";
+      var searchBox = document.getElementById("search-movie");
+      searchBox.value="";
+      searchBox.placeholder="Please enter a search term.";
     }
   });
 
@@ -263,11 +266,12 @@ lastSearchedButton.addEventListener("click", displayLastSearched);
 
 function displayLastSearched() {
   const searchMovies = localStorage.getItem("searchMovies");
+  const lastSearchTerm = localStorage.getItem("lastSearchTerm");
   if (searchMovies) {
     const movies = JSON.parse(searchMovies);
-    displayMovies(movies);
+    displayMovies(movies, lastSearchTerm);
   } else {
-    movieContainer.innerHTML = "No last searched movies found.";
+    containerLabel.textContent = "No last searched movies found.";
   }
 }
 });
